@@ -1,19 +1,15 @@
 from django.db import models
 
+
 # Create your models here.
-class Product_list(models.Model):
-    FOOD = 'FD'
-    DRINK = 'DK'
-    SNACK = 'SK'
-    PRODUCT_IN_PASHOP = [
-        (FOOD, 'อาหาร'),
-        (DRINK, 'เครื่องดื่ม'),
-        (SNACK, 'ขนม'),
-    ]
-    product_name = models.CharField(max_length=100)
-    product_in_pa = models.CharField(
-        max_length=2,
-        choices=PRODUCT_IN_PASHOP,
-        default=FOOD,
-    )
-    product_price = models.IntegerField(default=0)
+class product_type(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200, null=True)
+
+
+
+class product(models.Model):
+    name = models.CharField(max_length=50) 
+    product_type = models.ForeignKey(product_type, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200, null=True)
+    price = models.IntegerField()
