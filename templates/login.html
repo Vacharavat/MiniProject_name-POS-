@@ -38,34 +38,36 @@
     </style>
 
 </head>
+{% block content %}
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#"><img src="{% static "logo.png" %}" alt="My image"> ร้านป้าไม่ได้อะไรเลย</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ร้านป้าไม่ได้อะไรเลย</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">ร้านค้า</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'management' %}">จัดการร้านค้า</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">ออกจากระบบ</a>
-                </li>
-            </ul>
-        </div>
     </nav>
     <br>
+    <br>
     <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <div class="footer">
-        {% block footer %}
-        {% endblock %}
+        <h1>เข้าสู่ระบบ</h1>
+        <br/><br/>
+        {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control ml-3" id="username" 
+                    name="username" value="{{username}}">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control ml-3" id="password" 
+                    name="password" value="{{password}}">
+            </div>
+            <button type="submit" class="btn btn-primary ml-3">Login</button>
+        </form>
+        <br/><br/>
     </div>
 </body>
-</html>
+{% endblock %}

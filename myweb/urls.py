@@ -18,8 +18,12 @@ from django.urls import path
 from POS import views
 
 urlpatterns = [
+    path('', views.my_login, name='login'),
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('index/', views.home, name='index'),
+    path('management/', views.Management, name='management'),
+    path('managementType/', views.ManagementType, name='managementType'),
     path('show_error/', views.show_error_404, name='error'),
+    path('logout', views.my_logout, name='logout'),
 
 ]

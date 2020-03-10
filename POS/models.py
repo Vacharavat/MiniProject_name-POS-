@@ -1,8 +1,9 @@
+
 from django.db import models
 
 # Create your models here.
 
-class product_type(models.Model):
+class Product_type(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200, null=True)
 
@@ -11,10 +12,10 @@ class product_type(models.Model):
 
 
 
-class product(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=50) 
-    Type = models.ForeignKey(product_type, on_delete=models.CASCADE, default='')
-    description = models.CharField(max_length=200, null=True)
+    Type = models.ForeignKey(Product_type, on_delete=models.CASCADE, default='')
+    description = models.CharField(max_length=200, null=False, default='')
     price = models.IntegerField(default=0)
 
     def __str__(self):
