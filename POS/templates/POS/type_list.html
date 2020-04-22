@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">        
+        <br>
+        <br>
+        <div class="row">
+            <div class="jumbotron">
+                <h1>จัดรายการประเภทสินค้า</h1>
+                <br/><br/>
+            
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ประเภท</th>
+                            <th scope="col">คำอธิบาย</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pd in po_type %}
+                        <tr>
+                            <td>{{ pd.name }}</td>
+                            <td>{{ pd.description }}</td>
+                            <td>
+                                <a href="{% url 'type_edit' pd.id %}">
+                                    <div class="btn btn-warning" id="pd.id">แก้ไข</div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'type_delete' pd.id %}">
+                                    <div class="btn btn-danger" id="pd.id">ลบ</div>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

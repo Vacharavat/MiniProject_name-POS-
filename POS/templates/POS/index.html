@@ -15,7 +15,7 @@
                             name="search_product" placeholder="ชื่อสินค้า" value="{{search_product}}">
                         <select id="search_type">
                             {% for pt in po_type %}
-                            <option value="{{ search_type }}">{{ pt.name }}</option>
+                            <option value="{{ pt.name }}">{{ pt.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -39,9 +39,11 @@
                             <td>{{ pd.Type }}</td>
                             <td>{{ pd.price }}</td>
                             <td>
-                                <a href="">
-                                    <div class="btn btn-dark" id="{{pd.id}}">ใส่ตะกร้า</div>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'add_to_cart' pd.id%}">
+                                    <div class="btn btn-dark" id="pd.id">ใส่ตะกร้า</div>
                                 </a>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}
@@ -54,7 +56,7 @@
                     <thead>
                         <tr>
                             <th scope="col">ชื่อ</th>
-                            <th scope="col">ประเภท</th>
+                            <th scope="col">จำนวน</th>
                             <th scope="col">ราคา</th>
                         </tr>
                     </thead>
@@ -70,7 +72,9 @@
                     <tbody>
                     </tbody>
                 </table>
+                {% if user.is_authenticated %}
                 <button type="submit" class="btn btn-success">ขาย</button>
+                {% endif %}
             </div>
         </div>
     </div>

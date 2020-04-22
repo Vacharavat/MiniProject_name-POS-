@@ -5,28 +5,32 @@
         <br>
         <div class="row">
             <div class="jumbotron">
-                <h1>จัดการายการสินค้า</h1>
+                <h1>ยอดขายโดยรวม</h1>
                 <br/><br/>
+                <br>
+                <br>
+                <div class="row">
+                    <a class="btn btn-dark text-white col-3" href="{% url 'Product_add' %}">ยอดขายรายวัน</a>
+                    <a class="btn btn-dark text-white col-3" href="{% url 'type_manage' %}">ยอดขายรายสัปดาห์</a>
+                    <a class="btn btn-dark text-white col-3" href="{% url 'add_type' %}">ยอดขายรายเดือน</a>
+                    <a class="btn btn-dark text-white col-3" href="{% url 'type_manage' %}">ยอดขายรายปี</a>
+                    
+                </div>
+                <br>
                 <form class="form-inline" method="GET">
                     <div class="form-group">
                         <label for="search_product">ค้นหา:</label>
-                        <input type="text" class="form-control ml-3" id="search_product" 
-                            name="search_product" placeholder="ชื่อสินค้า" value="{{search_product}}">
+                        <input type="date" class="form-control ml-3" id="search_order" 
+                            name="search_order" value="{{search_product}}">  
                     </div>
                     <button type="submit" class="btn btn-primary ml-3">ค้นหา</button>
                 </form>
                 <br>
-                <br>
-                    <a class="btn btn-dark text-white" href="{% url 'Product_add' %}">เพิ่มสินค้า</a>
-                    <a class="btn btn-dark text-white" href="{% url 'add_type' %}">เพิ่มประเภท</a>
-                    <a class="btn btn-dark text-white" href="{% url 'type_manage' %}">ประเภททั้งหมด</a>
-                <br>
-                <br>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ชื่อ</th>
-                            <th scope="col">ประเภท</th>
+                            <th scope="col">ชื่อสินค้า</th>
+                            <th scope="col">จำนวน</th>
                             <th scope="col">ราคา</th>
                             <th scope="col"></th>
                             <th scope="col"></th>

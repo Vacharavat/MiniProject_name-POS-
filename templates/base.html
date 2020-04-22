@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Base</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
-    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mitr&display=swap" rel="stylesheet">
     <style>
     body{
-        font-family: 'Kanit', sans-serif;
+        font-family: 'Mitr', sans-serif;
     }
     header[role="banner"] {
         #logo-main {
@@ -51,6 +51,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'management' %}">จัดการร้านค้า</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'report' %}">รวมรายได้</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">ออกจากระบบ</a>
